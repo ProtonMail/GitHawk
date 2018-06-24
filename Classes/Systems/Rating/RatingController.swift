@@ -9,7 +9,7 @@
 import Foundation
 import StoreKit
 import IGListKit
-import Crashlytics
+//import Crashlytics
 
 final class RatingToken: NSObject, ListDiffable {
 
@@ -68,7 +68,7 @@ final class RatingController {
             openAppStore()
         }
 
-        Answers.logCustomEvent(withName: "rating-prompt", customAttributes: ["type": typeString])
+//        Answers.logCustomEvent(withName: "rating-prompt", customAttributes: ["type": typeString])
     }
 
     // MARK: Private API

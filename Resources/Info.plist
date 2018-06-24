@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>GitHawk</string>
+	<string>ProtonGitHawk</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -24,29 +24,15 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.whoisryannystrom.freetime</string>
+			<string>com.protonmail.githawk</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>freetime</string>
+				<string>protongit</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>SEE BUILD PHASE</string>
-	<key>Fabric</key>
-	<dict>
-		<key>APIKey</key>
-		<string>45ebb3c197db95937d23c07145bb2da8226cd851</string>
-		<key>Kits</key>
-		<array>
-			<dict>
-				<key>KitInfo</key>
-				<dict/>
-				<key>KitName</key>
-				<string>Crashlytics</string>
-			</dict>
-		</array>
-	</dict>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>

@@ -9,9 +9,9 @@
 import UIKit
 import Alamofire
 import AlamofireNetworkActivityIndicator
-import Fabric
-import Crashlytics
-import Firebase
+//import Fabric
+//import Crashlytics
+//import Firebase
 import GitHubSession
 
 @UIApplicationMain
@@ -43,11 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = UIWebView()
 
         // setup firebase
-        FirebaseApp.configure()
-        Database.database().isPersistenceEnabled = true
+//        FirebaseApp.configure()
+//        Database.database().isPersistenceEnabled = true
 
         // setup fabric
-        Fabric.with([Crashlytics.self])
+//        Fabric.with([Crashlytics.self])
 
         // send rating prompt app load event
         RatingController.applicationDidLaunch()

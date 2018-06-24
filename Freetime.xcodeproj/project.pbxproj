@@ -234,7 +234,6 @@
 		297B062A1FB9239E0026FA23 /* IGListCollectionViewLayout+GitHawk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B06291FB9239E0026FA23 /* IGListCollectionViewLayout+GitHawk.swift */; };
 		297B062C1FB92DCA0026FA23 /* UICollectionViewLayout+Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B062B1FB92DCA0026FA23 /* UICollectionViewLayout+Orientation.swift */; };
 		297DD5E11F061BBE006E7E63 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297DD5E01F061BBE006E7E63 /* CreateProfileViewController.swift */; };
-		297DD5E31F06922A006E7E63 /* NotificationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297DD5E21F06922A006E7E63 /* NotificationClient.swift */; };
 		297EC91D20C4765000B6E42C /* MilestoneSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297EC91C20C4765000B6E42C /* MilestoneSectionController.swift */; };
 		297EC91F20C4768600B6E42C /* MilestoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297EC91E20C4768600B6E42C /* MilestoneViewModel.swift */; };
 		297FB7781F51128A00F2E618 /* SettingsAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FB7771F51128A00F2E618 /* SettingsAccountsViewController.swift */; };
@@ -737,7 +736,6 @@
 		297B06291FB9239E0026FA23 /* IGListCollectionViewLayout+GitHawk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IGListCollectionViewLayout+GitHawk.swift"; sourceTree = "<group>"; };
 		297B062B1FB92DCA0026FA23 /* UICollectionViewLayout+Orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewLayout+Orientation.swift"; sourceTree = "<group>"; };
 		297DD5E01F061BBE006E7E63 /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
-		297DD5E21F06922A006E7E63 /* NotificationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationClient.swift; sourceTree = "<group>"; };
 		297EC91C20C4765000B6E42C /* MilestoneSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneSectionController.swift; sourceTree = "<group>"; };
 		297EC91E20C4768600B6E42C /* MilestoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneViewModel.swift; sourceTree = "<group>"; };
 		297FB7771F51128A00F2E618 /* SettingsAccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAccountsViewController.swift; sourceTree = "<group>"; };
@@ -2125,7 +2123,6 @@
 				297AE8311EC0D58A00B44A1F /* Frameworks */,
 				297AE8321EC0D58A00B44A1F /* Resources */,
 				DCF1A6481F9E3E1F00A7A4A0 /* SwiftLint */,
-				295B51391FC2342200C3993B /* Run Fabric */,
 				ABA015066A84600AF351C942 /* [CP] Embed Pods Frameworks */,
 				294EE4DF209006C3002C9CB1 /* Embed Watch Content */,
 			);
@@ -2171,7 +2168,7 @@
 				TargetAttributes = {
 					294EE4B8209006BF002C9CB1 = {
 						CreatedOnToolsVersion = 9.3;
-						DevelopmentTeam = 523C4DWBTH;
+						DevelopmentTeam = 6UN54H93QT;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -2181,7 +2178,7 @@
 					};
 					294EE4C4209006C2002C9CB1 = {
 						CreatedOnToolsVersion = 9.3;
-						DevelopmentTeam = 523C4DWBTH;
+						DevelopmentTeam = 6UN54H93QT;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -2191,7 +2188,7 @@
 					};
 					297AE8331EC0D58A00B44A1F = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 523C4DWBTH;
+						DevelopmentTeam = 6UN54H93QT;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -2295,20 +2292,6 @@
 			shellPath = /bin/sh;
 			shellScript = "if [[ ! -z \"${DISABLE_APOLLO}\" ]]; then\n  echo \"Stopping Task: Remove 'DISABLE_APOLLO' env variable to continue.\"\n  exit\nfi\n\nPATH=\"$(npm bin):$PATH\"\n\nAPOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \\\"Apollo.framework\\\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/gql\"\nTEMP_FILE=$(mktemp)\n\n[[ -f API.swift ]] || touch API.swift # ensure sure file exists\n\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-codegen.sh generate $(find . -name '*.graphql') --schema schema.json --output $TEMP_FILE\n\ncmp API.swift $TEMP_FILE || cp $TEMP_FILE API.swift";
 		};
-		295B51391FC2342200C3993B /* Run Fabric */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Fabric";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 45ebb3c197db95937d23c07145bb2da8226cd851 5a7c91261f303a0c7b657c8f26d0c46275893eb555f601427d7538e9a67c3b3d";
-		};
 		31BB990E12BB1B12BDA4681F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2395,7 +2378,6 @@
 				"${BUILT_PRODUCTS_DIR}/FlatCache/FlatCache.framework",
 				"${BUILT_PRODUCTS_DIR}/GitHubAPI-iOS/GitHubAPI.framework",
 				"${BUILT_PRODUCTS_DIR}/GitHubSession-iOS/GitHubSession.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/HTMLString/HTMLString.framework",
 				"${BUILT_PRODUCTS_DIR}/Highlightr/Highlightr.framework",
 				"${BUILT_PRODUCTS_DIR}/IGListKit/IGListKit.framework",
@@ -2410,8 +2392,6 @@
 				"${BUILT_PRODUCTS_DIR}/TUSafariActivity/TUSafariActivity.framework",
 				"${BUILT_PRODUCTS_DIR}/Tabman/Tabman.framework",
 				"${BUILT_PRODUCTS_DIR}/cmark-gfm-swift/cmark_gfm_swift.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -2426,7 +2406,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlatCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GitHubAPI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GitHubSession.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HTMLString.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Highlightr.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IGListKit.framework",
@@ -2441,8 +2420,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TUSafariActivity.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Tabman.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/cmark_gfm_swift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2527,7 +2504,6 @@
 				"${BUILT_PRODUCTS_DIR}/FlatCache/FlatCache.framework",
 				"${BUILT_PRODUCTS_DIR}/GitHubAPI-iOS/GitHubAPI.framework",
 				"${BUILT_PRODUCTS_DIR}/GitHubSession-iOS/GitHubSession.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/HTMLString/HTMLString.framework",
 				"${BUILT_PRODUCTS_DIR}/Highlightr/Highlightr.framework",
 				"${BUILT_PRODUCTS_DIR}/IGListKit/IGListKit.framework",
@@ -2542,8 +2518,6 @@
 				"${BUILT_PRODUCTS_DIR}/TUSafariActivity/TUSafariActivity.framework",
 				"${BUILT_PRODUCTS_DIR}/Tabman/Tabman.framework",
 				"${BUILT_PRODUCTS_DIR}/cmark-gfm-swift/cmark_gfm_swift.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSnapshotTestCase/FBSnapshotTestCase.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -2559,7 +2533,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlatCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GitHubAPI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GitHubSession.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HTMLString.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Highlightr.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IGListKit.framework",
@@ -2574,8 +2547,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TUSafariActivity.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Tabman.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/cmark_gfm_swift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2824,7 +2795,6 @@
 				29C8F9B5208C081D0075931C /* LabelSectionController.swift in Sources */,
 				29136BE3200AAA5A007317BE /* UIViewController+FilePathTitle.swift in Sources */,
 				29B5D08B20D578DB003DFBE2 /* InboxType.swift in Sources */,
-				29EE1C191F3A2EDB0046A54D /* LabelTableCell.swift in Sources */,
 				295B51481FC26F7F00C3993B /* UIImageView+Avatar.swift in Sources */,
 				297B062A1FB9239E0026FA23 /* IGListCollectionViewLayout+GitHawk.swift in Sources */,
 				DCA5ED1D1FAEF9EE0072F074 /* BookmarkCell.swift in Sources */,
@@ -2849,7 +2819,6 @@
 				29A1950A1EC78B4800C3E289 /* NotificationType+Icon.swift in Sources */,
 				29A1950C1EC7901400C3E289 /* NotificationType.swift in Sources */,
 				294AF7F11FC674A400854790 /* CommitDetails.swift in Sources */,
-				29C9FDDD1EC6628200EE3A52 /* NotificationViewModel.swift in Sources */,
 				29D8DF031FBBD72A00C486C2 /* IssueManagingActionModel.swift in Sources */,
 				292CD3D41F0DC12100D3D57B /* PhotoViewHandler.swift in Sources */,
 				294563EE1EE5012900DBCD35 /* PullRequest+IssueType.swift in Sources */,
@@ -3091,11 +3060,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 523C4DWBTH;
+				DEVELOPMENT_TEAM = 6UN54H93QT;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				IBSC_MODULE = FreetimeWatch_Extension;
 				INFOPLIST_FILE = FreetimeWatch/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.whoisryannystrom.freetime.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.protonmail.githawk.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -3118,11 +3087,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 523C4DWBTH;
+				DEVELOPMENT_TEAM = 6UN54H93QT;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				IBSC_MODULE = FreetimeWatch_Extension;
 				INFOPLIST_FILE = FreetimeWatch/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.whoisryannystrom.freetime.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.protonmail.githawk.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -3145,11 +3114,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 523C4DWBTH;
+				DEVELOPMENT_TEAM = 6UN54H93QT;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				IBSC_MODULE = FreetimeWatch_Extension;
 				INFOPLIST_FILE = FreetimeWatch/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.whoisryannystrom.freetime.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.protonmail.githawk.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -3169,11 +3138,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = "FreetimeWatch Extension/FreetimeWatch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 523C4DWBTH;
+				DEVELOPMENT_TEAM = 6UN54H93QT;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "FreetimeWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.whoisryannystrom.freetime.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.protonmail.githawk.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -3193,11 +3162,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = "FreetimeWatch Extension/FreetimeWatch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 523C4DWBTH;
+				DEVELOPMENT_TEAM = 6UN54H93QT;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "FreetimeWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.whoisryannystrom.freetime.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.protonmail.githawk.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -3217,11 +3186,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = "FreetimeWatch Extension/FreetimeWatch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 523C4DWBTH;
+				DEVELOPMENT_TEAM = 6UN54H93QT;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "FreetimeWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.whoisryannystrom.freetime.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.protonmail.githawk.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -3357,7 +3326,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 523C4DWBTH;
+				DEVELOPMENT_TEAM = 6UN54H93QT;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3380,7 +3349,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -debug-time-function-bodies -Onone -Xfrontend -warn-long-function-bodies=200 -Xfrontend -warn-long-expression-type-checking=200";
-				PRODUCT_BUNDLE_IDENTIFIER = com.whoisryannystrom.freetime;
+				PRODUCT_BUNDLE_IDENTIFIER = com.protonmail.githawk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3400,7 +3369,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 523C4DWBTH;
+				DEVELOPMENT_TEAM = 6UN54H93QT;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3423,7 +3392,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -debug-time-function-bodies";
-				PRODUCT_BUNDLE_IDENTIFIER = com.whoisryannystrom.freetime;
+				PRODUCT_BUNDLE_IDENTIFIER = com.protonmail.githawk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3529,7 +3498,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 523C4DWBTH;
+				DEVELOPMENT_TEAM = 6UN54H93QT;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3558,7 +3527,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -debug-time-function-bodies";
-				PRODUCT_BUNDLE_IDENTIFIER = com.whoisryannystrom.freetime;
+				PRODUCT_BUNDLE_IDENTIFIER = com.protonmail.githawk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

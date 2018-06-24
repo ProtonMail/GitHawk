@@ -9,7 +9,8 @@
 import Foundation
 import Alamofire
 
-final class ImgurClient {
+/// No image upload permitted - keep them safe from Imgur
+class ImgurClient {
 
     enum ImgurError: Error {
         // missingLink: - Received a valid response, but no link was available in the payload
@@ -24,16 +25,20 @@ final class ImgurClient {
         // rateLimitExceeded: - We are too close to the Imgur rate limit, so no images are being permitted
         case rateLimitExceeded
     }
-
+/*
     private static let hostpath = "https://api.imgur.com/3/"
     private static let headers: HTTPHeaders = ["Authorization": "Client-ID \(Secrets.Imgur.clientId)"]
-
+*/
     func request(_ path: String,
                  method: HTTPMethod = .get,
                  parameters: Parameters? = nil,
                  headers: HTTPHeaders? = nil,
                  completion: @escaping (DataResponse<Any>) -> Void) {
-
+        completion(DataResponse.init(request: nil,
+                                     response: nil,
+                                     data: nil,
+                                     result: .failure(NSError())))
+/*
         let encoding: ParameterEncoding
         switch method {
         case .get: encoding = URLEncoding.queryString
@@ -45,12 +50,14 @@ final class ImgurClient {
                           parameters: parameters,
                           encoding: encoding,
                           headers: headers ?? ImgurClient.headers).responseJSON(completionHandler: completion)
+ */
     }
 
     func canUploadImage(
         completion: @escaping (Error?) -> Void
         ) {
-
+        completion(nil)
+/*
         request("credits") { response in
             guard let dict = response.value as? [String: Any], let data = dict["data"] as? [String: Any] else {
                 completion(ImgurError.malformedResponse)
@@ -76,6 +83,7 @@ final class ImgurClient {
             
             completion(nil)
         }
+ */
     }
 
     func uploadImage(
@@ -85,6 +93,8 @@ final class ImgurClient {
         description: String,
         completion: @escaping (Result<String>) -> Void
         ) {
+        completion(.error(nil))
+        /*
         let params = [
             "image": base64Image,
             "type": "base64",
@@ -106,6 +116,8 @@ final class ImgurClient {
 
             completion(.success(link))
         }
+ */
     }
 
 }
+

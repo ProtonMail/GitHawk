@@ -19,11 +19,11 @@ def testing_pods
   pod 'SnapKit', '~> 4.0.0'
   pod 'TUSafariActivity', '~> 1.0.0'
   pod 'SwiftLint'
-  pod 'Fabric'
-  pod 'Crashlytics'
+  #pod 'Fabric'
+  #pod 'Crashlytics'
   pod 'Tabman', '~> 1.8'
-  pod 'Firebase/Core'
-  pod 'Firebase/Database' 
+  #pod 'Firebase/Core'
+  #pod 'Firebase/Database'
 
   # prerelease pods
   pod 'IGListKit/Swift', :git => 'https://github.com/Instagram/IGListKit.git', :branch => 'swift'
