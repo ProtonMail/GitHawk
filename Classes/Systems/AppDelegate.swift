@@ -9,9 +9,6 @@
 import UIKit
 import Alamofire
 import AlamofireNetworkActivityIndicator
-import Fabric
-import Crashlytics
-import Firebase
 import GitHubSession
 
 @UIApplicationMain
@@ -41,13 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // initialize a webview at the start so webview startup later on isn't so slow
         _ = UIWebView()
-
-        // setup firebase
-        FirebaseApp.configure()
-        Database.database().isPersistenceEnabled = true
-
-        // setup fabric
-        Fabric.with([Crashlytics.self])
 
         // send rating prompt app load event
         RatingController.applicationDidLaunch()

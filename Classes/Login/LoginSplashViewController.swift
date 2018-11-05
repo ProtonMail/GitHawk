@@ -12,7 +12,7 @@ import GitHubAPI
 import GitHubSession
 
 private let loginURL = URL(string: "http://github.com/login/oauth/authorize?client_id=\(Secrets.GitHub.clientId)&scope=user+repo+notifications")!
-private let callbackURLScheme = "freetime://"
+private let callbackURLScheme = "protongit://"
 
 final class LoginSplashViewController: UIViewController, GitHubSessionListener {
 

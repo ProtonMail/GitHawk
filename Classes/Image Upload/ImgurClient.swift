@@ -25,8 +25,6 @@ final class ImgurClient {
         case rateLimitExceeded
     }
 
-    private static let hostpath = "https://api.imgur.com/3/"
-    private static let headers: HTTPHeaders = ["Authorization": "Client-ID \(Secrets.Imgur.clientId)"]
 
     func request(_ path: String,
                  method: HTTPMethod = .get,
@@ -34,48 +32,17 @@ final class ImgurClient {
                  headers: HTTPHeaders? = nil,
                  completion: @escaping (DataResponse<Any>) -> Void) {
 
-        let encoding: ParameterEncoding
-        switch method {
-        case .get: encoding = URLEncoding.queryString
-        default: encoding = JSONEncoding.default
-        }
-
-        Alamofire.request(ImgurClient.hostpath + path,
-                          method: method,
-                          parameters: parameters,
-                          encoding: encoding,
-                          headers: headers ?? ImgurClient.headers).responseJSON(completionHandler: completion)
+        completion(DataResponse.init(request: nil,
+                                     response: nil,
+                                     data: nil,
+                                     result: .failure(NSError())))
     }
 
     func canUploadImage(
         completion: @escaping (Error?) -> Void
         ) {
 
-        request("credits") { response in
-            guard let dict = response.value as? [String: Any], let data = dict["data"] as? [String: Any] else {
-                completion(ImgurError.malformedResponse)
-                return
-            }
-            
-            if let error = data["error"] as? String {
-                completion(ImgurError.endpointError(error))
-                return
-            }
-
-            guard let userRemaining = data["UserRemaining"] as? Int, let clientRemaining = data["ClientRemaining"] as? Int else {
-                completion(ImgurError.malformedResponse)
-                return
-            }
-
-            // Takes 10 tokens to upload an image, a buffer has been added to prevent us using 100% of our allowance as this
-            // will mean our app gets temporarily blocked from Imgur!
-            guard userRemaining > 20, clientRemaining > 100 else {
-                completion(ImgurError.rateLimitExceeded)
-                return
-            }
-            
-            completion(nil)
-        }
+        completion(nil)
     }
 
     func uploadImage(
@@ -85,27 +52,7 @@ final class ImgurClient {
         description: String,
         completion: @escaping (Result<String>) -> Void
         ) {
-        let params = [
-            "image": base64Image,
-            "type": "base64",
-            "name": name,
-            "title": title,
-            "description": description
-        ]
-
-        request("image", method: .post, parameters: params) { response in
-            guard let dict = response.value as? [String: Any], let data = dict["data"] as? [String: Any] else {
-                completion(.error(response.error))
-                return
-            }
-
-            guard let link = data["link"] as? String else {
-                completion(.error(ImgurError.missingLink))
-                return
-            }
-
-            completion(.success(link))
-        }
+        completion(.error(nil))
     }
 
 }

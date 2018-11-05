@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Firebase
 
 final class NotificationEmptyMessageClient {
 
@@ -16,26 +15,10 @@ final class NotificationEmptyMessageClient {
         let text: String
     }
 
-    private lazy var reference: DatabaseReference = {
-        let r = Database.database().reference()
-        r.keepSynced(true)
-        return r
-    }()
-
     // MARK: Public API
 
     func fetch(completion: @escaping (Result<Message>) -> Void) {
-        reference.observeSingleEvent(of: .value, with: { (snapshot) in
-            if let inboxZero = (snapshot.value as? [String: Any])?["inbox_zero"] as? [String: Any],
-                let emoji = inboxZero["emoji"] as? String,
-                let text = inboxZero["text"] as? String {
-                completion(.success(Message(emoji: emoji, text: text)))
-            } else {
-                completion(.error(nil))
-            }
-        }) { (error) in
-            completion(.error(error))
-        }
+        completion(.error(nil))
     }
 
 }

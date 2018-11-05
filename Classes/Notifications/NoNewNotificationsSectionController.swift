@@ -8,7 +8,6 @@
 
 import UIKit
 import IGListKit
-import Crashlytics
 
 final class NoNewNotificationSectionController: ListSwiftSectionController<String> {
 
@@ -66,7 +65,6 @@ final class NoNewNotificationSectionController: ListSwiftSectionController<Strin
         case .error(let error):
             state = .error
             let msg = error?.localizedDescription ?? ""
-            Answers.logCustomEvent(withName: "fb-fetch-error", customAttributes: ["error": msg])
         }
 
         guard let cell = collectionContext?.cellForItem(at: 0, sectionController: self) as? NoNewNotificationsCell
